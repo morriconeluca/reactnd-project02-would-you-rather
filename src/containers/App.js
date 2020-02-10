@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {handleGetUsers} from '../actions/users';
 
+import Loader from '../components/Loader';
+
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleGetUsers());
@@ -12,9 +14,12 @@ class App extends Component {
     const usersId = Object.keys(users);
 
     return (
-      <div>
-        {usersId.length === 0 ? 'Loading...' : 'Hello World!'}
-      </div>
+      <>
+        {usersId.length === 0
+          ? <Loader position="fixed" />
+          : 'Hello World!'
+        }
+      </>
     );
   }
 }
