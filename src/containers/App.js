@@ -1,11 +1,26 @@
-import React from 'react';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import {handleGetUsers} from '../actions/users';
 
-function App() {
-  return (
-    <div>
-      Hello React!
-    </div>
-  );
+class App extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleGetUsers());
+  }
+
+  render() {
+    const {users} = this.props;
+    const usersId = Object.keys(users);
+
+    return (
+      <div>
+        {usersId.length === 0 ? 'Loading...' : 'Hello World!'}
+      </div>
+    );
+  }
 }
 
-export default App;
+const mapStateToProps = state => ({
+  users: state.users
+});
+
+export default connect(mapStateToProps)(App);
