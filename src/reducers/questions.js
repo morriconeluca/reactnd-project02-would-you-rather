@@ -7,4 +7,4 @@ export default function questions(state = {}, action) {
     default:
       return state;
   }
-}
+};
