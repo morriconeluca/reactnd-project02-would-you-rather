@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {handleGetUsers} from '../actions/users';
 
 import Loader from '../components/Loader';
+import Signin from './Signin';
 
 class App extends Component {
   componentDidMount() {
@@ -10,14 +11,16 @@ class App extends Component {
   }
 
   render() {
-    const {users} = this.props;
-    const usersId = Object.keys(users);
+    const {usersIds, authedUser} = this.props;
 
     return (
       <>
-        {usersId.length === 0
+        {usersIds.length === 0
           ? <Loader position="fixed" />
-          : 'Hello World!'
+          : (authedUser === null
+              ? <Signin />
+              : 'Shell'
+          )
         }
       </>
     );
@@ -25,7 +28,8 @@ class App extends Component {
 }
 
 const mapStateToProps = state => ({
-  users: state.users
+  usersIds: Object.keys(state.users),
+  authedUser: state.authedUser
 });
 
 export default connect(mapStateToProps)(App);
