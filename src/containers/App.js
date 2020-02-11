@@ -1,9 +1,11 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
+import {BrowserRouter} from 'react-router-dom';
 import {handleGetUsers} from '../actions/users';
 
 import Loader from '../components/Loader';
 import Signin from './Signin';
+import Shell from './Shell';
 
 class App extends Component {
   componentDidMount() {
@@ -14,15 +16,17 @@ class App extends Component {
     const {usersIds, authedUser} = this.props;
 
     return (
-      <>
-        {usersIds.length === 0
-          ? <Loader position="fixed" />
-          : (authedUser === null
-              ? <Signin />
-              : 'Shell'
-          )
-        }
-      </>
+      <BrowserRouter>
+        <>
+          {usersIds.length === 0
+            ? <Loader position="fixed" />
+            : (authedUser === null
+                ? <Signin />
+                : <Shell />
+            )
+          }
+        </>
+      </BrowserRouter>
     );
   }
 }

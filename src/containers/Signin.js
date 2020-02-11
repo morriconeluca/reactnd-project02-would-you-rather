@@ -43,7 +43,7 @@ class Signin extends Component {
           </header>
           <fieldset className="card-body">
             <Avatar
-              className="signin-image"
+              className="signin-avatar"
               id={selectedUser}
             />
             <h2>Sign in as…</h2>
