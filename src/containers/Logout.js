@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {setAuthedUser} from '../actions/authedUser';
 
+
 class Logout extends Component {
   handleClick = e => {
     e.preventDefault();
@@ -11,7 +12,7 @@ class Logout extends Component {
     return (
       <button
         onClick={this.handleClick}
-        className="logout"
+        className="logout circle-icon-button"
       >
         Logout
       </button>

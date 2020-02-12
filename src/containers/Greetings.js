@@ -5,8 +5,8 @@ import Avatar from './Avatar';
 
 function Greetings({authedUser, authedUserName}) {
   return (
-    <p>
-      Hello, {authedUserName}
+    <p className="greetings centralize">
+      <span>Hello,</span>{authedUserName}
       <Avatar id={authedUser} className="navbar-avatar"/>
     </p>
   );

@@ -7,21 +7,30 @@ import Logout from '../containers/Logout';
 export default function Navbar() {
   return (
     <header className="navbar">
-      <nav>
-        <ul>
+      <nav className="container centralize">
+        <ul className="centralize">
           <li>
-            <NavLink to="/">Home</NavLink>
+            <NavLink
+              to="/"
+              activeClassName="active-navlink"
+            >Home</NavLink>
           </li>
           <li>
-            <NavLink to="/new">New Poll</NavLink>
+            <NavLink
+              to="/new"
+              activeClassName="active-navlink"
+            >New Poll</NavLink>
           </li>
           <li>
-            <NavLink to="/leaderboard">Leader Board</NavLink>
+            <NavLink
+              to="/leaderboard"
+              activeClassName="active-navlink"
+            >Leader Board</NavLink>
           </li>
         </ul>
+        <Greetings />
+        <Logout />
       </nav>
-      <Greetings />
-      <Logout />
     </header>
   );
 }
