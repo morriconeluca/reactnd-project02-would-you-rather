@@ -12,19 +12,19 @@ export default function Navbar() {
           <li>
             <NavLink exact
               to="/"
-              activeClassName="active-navlink"
+              activeClassName="navlink-active"
             >Home</NavLink>
           </li>
           <li>
             <NavLink exact
               to="/new"
-              activeClassName="active-navlink"
+              activeClassName="navlink-active"
             >New Poll</NavLink>
           </li>
           <li>
             <NavLink exact
               to="/leaderboard"
-              activeClassName="active-navlink"
+              activeClassName="navlink-active"
             >Leader Board</NavLink>
           </li>
         </ul>

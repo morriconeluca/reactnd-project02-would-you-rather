@@ -30,7 +30,7 @@ class Signin extends Component {
     const {selectedUser} = this.state;
 
     return (
-      <main className="signin centralize">
+      <div className="signin centralize">
         <form
           onSubmit={this.handleSubmit}
           className="signin-card card"
@@ -64,7 +64,7 @@ class Signin extends Component {
             <a href="http://www.freepik.com" target="_blank" rel="noopener noreferrer">Avatars images designed by pikisuperstar / Freepik</a>
           </footer>
         </form>
-      </main>
+      </div>
     );
   }
 }

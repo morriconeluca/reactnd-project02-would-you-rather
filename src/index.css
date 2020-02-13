@@ -30,6 +30,7 @@ a {
 
 .container {
   margin: 0 auto;
+  padding: 0 1em;
 }
 
 .centralize {
@@ -113,6 +114,7 @@ a {
 /* MAIN */
 main {
   min-height: 100vh;
+  padding-top: 6.6em;
 }
 
 /* SIGNIN */
@@ -233,6 +235,7 @@ button:disabled:focus {
   border-color: #bdbdbd;
   -webkit-box-shadow: none;
   box-shadow: none;
+  cursor: not-allowed;
 }
 
 /* NAVBAR */
@@ -261,7 +264,7 @@ button:disabled:focus {
 
 .navbar ul {
   list-style: none;
-  margin: 0 1em;
+  margin: 0;
   order: 1;
   padding: 0;
   width: 100%;
@@ -281,7 +284,7 @@ button:disabled:focus {
   background-color: #f5f5f5;
 }
 
-.active-navlink {
+.navlink-active {
   border-bottom: 4px solid #1976d2;
 }
 
@@ -293,7 +296,7 @@ button:disabled:focus {
 
 .greetings {
   font-size: .83em;
-  margin: .5rem auto .5rem 1rem;
+  margin: .5rem auto .5rem 0;
 }
 
 .greetings span {
@@ -304,7 +307,7 @@ button:disabled:focus {
   background-color: rgba(238,238,238,.8);
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path fill="rgba(0,0,0,.8)" d="M7.09 12.59L8.5 14l5-5-5-5-1.41 1.41L9.67 8H0v2h9.67zM18 0H0v6h2V2h14v14H2v-4H0v6h18z"/></svg>');
   border: 1px solid rgba(189,189,189,.8);
-  margin: .5em 1em;
+  margin: .5em 0 .5em 1em;
   overflow: hidden;
 }
 
@@ -316,9 +319,55 @@ button:disabled:focus {
   box-shadow: 0 0 0 4px rgba(33,150,243,.8);
 }
 
+/* TABS */
+
+.toggle-tabs {
+  width: 100%;
+}
+
+.tab {
+  background-color: #f5f5f5;
+  border-color: rgba(189,189,189,.4);
+  border-radius: 8px 8px 0 0;
+  color: #0d47a1;
+  position: relative;
+  top: 1px;
+}
+
+.tab:hover,
+.tab:focus {
+  background-color: #fff;
+  border-color: #fff #fff transparent;
+}
+
+.tab.active,
+.tab.active:hover,
+.tab.active:focus {
+  background-color: #fff;
+  border-color: rgba(189,189,189,.4) rgba(189,189,189,.4) #fff;
+  color: rgba(0,0,0,.8);
+}
+
+.tab + .tab {
+  margin-left: .2em;
+}
+
+.tab-view {
+  background-color: #fff;
+  border: 1px solid rgba(189,189,189,.4);
+  border-radius: 0 0 8px 8px;
+  min-height: 10em;
+  overflow: hidden;
+  padding: 1em;
+}
+
 @media (min-width: 640px) {
+  main {
+    padding-top: 3.8em;
+  }
+
   .navbar ul {
-    margin: 0 auto 0 1em;
+    margin-right: auto;
     order: 0;
     width: auto;
   }
@@ -335,7 +384,7 @@ button:disabled:focus {
   }
 
   .greetings {
-    margin: .5rem 0 .5rem 1rem;
+    margin: .5rem 0;
   }
 
   .greetings span {
@@ -363,8 +412,8 @@ button:disabled:focus {
   }
 }
 
-@media (min-width: 1024px) {
+@media (min-width: 1280px) {
   .container {
-    max-width: 1024px;
+    max-width: 1280px;
   }
 }

@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
 
+import Tab from '../components/Tab';
 import QuestionsList from './QuestionsList';
 
 export default class ToggleTabs extends Component {
@@ -7,8 +8,7 @@ export default class ToggleTabs extends Component {
     answered: false
   }
 
-  handleClick = (e, answered) => {
-    e.preventDefault();
+  handleClick = answered => {
     this.setState({
       answered
     });
@@ -18,20 +18,24 @@ export default class ToggleTabs extends Component {
     const {answered} = this.state;
 
     return (
-      <div>
+      <div className="toggle-tabs container">
         <div className="centralize">
-          <button
-            className="tab"
-            onClick={e => {this.handleClick(e, false);}}
-            disabled={!answered}
-          >Unanswered</button>
-          <button
-            className="tab"
-            onClick={e => {this.handleClick(e, true);}}
-            disabled={answered}
-          >Answered</button>
+          <Tab
+            handleClick={this.handleClick}
+            active={answered}
+            value={false}
+          >
+            Unanswered
+          </Tab>
+          <Tab
+            handleClick={this.handleClick}
+            active={!answered}
+            value={true}
+          >
+            Answered
+          </Tab>
         </div>
-        <div>
+        <div className="tab-view centralize">
           <QuestionsList answered={answered} />
         </div>
       </div>
