@@ -5,7 +5,7 @@ import {handleGetQuestions} from '../actions/questions';
 
 import Navbar from '../components/Navbar';
 import Loader from '../components/Loader';
-import QuestionsList from './QuestionsList';
+import ToggleTabs from './ToggleTabs';
 
 class Shell extends Component {
   componentDidMount() {
@@ -22,7 +22,7 @@ class Shell extends Component {
           ? <Loader />
           : (
             <Switch>
-              <Route exact path="/" render={() => <QuestionsList answered />} />
+              <Route exact path="/" component={ToggleTabs} />
               <Route exact path="/new" render={() => <p>New Poll</p>} />
               <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
             </Switch>
