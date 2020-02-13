@@ -19,7 +19,7 @@ class App extends Component {
       <BrowserRouter>
         <>
           {usersIds.length === 0
-            ? <Loader position="fixed" />
+            ? <Loader />
             : (authedUser === null
                 ? <Signin />
                 : <Shell />

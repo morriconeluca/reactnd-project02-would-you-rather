@@ -10,19 +10,19 @@ export default function Navbar() {
       <nav className="container centralize">
         <ul className="centralize">
           <li>
-            <NavLink
+            <NavLink exact
               to="/"
               activeClassName="active-navlink"
             >Home</NavLink>
           </li>
           <li>
-            <NavLink
+            <NavLink exact
               to="/new"
               activeClassName="active-navlink"
             >New Poll</NavLink>
           </li>
           <li>
-            <NavLink
+            <NavLink exact
               to="/leaderboard"
               activeClassName="active-navlink"
             >Leader Board</NavLink>

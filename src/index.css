@@ -102,11 +102,17 @@ a {
 /* LOADER */
 
 .loader {
-  height: 100%;
+  background-color: #fff;
+  height: 100vh;
   left: 0;
-  width: 100%;
+  position: fixed;
   top: 0;
-  z-index: 999999;
+  width: 100%;
+}
+
+/* MAIN */
+main {
+  min-height: 100vh;
 }
 
 /* SIGNIN */
@@ -117,7 +123,7 @@ a {
 
 .signin-card {
   margin: 1em;
-  max-width: 425px;
+  max-width: 480px;
   min-width: 280px;
   text-align: center;
   width: 100%;
@@ -232,9 +238,13 @@ button:disabled:focus {
 /* NAVBAR */
 
 .navbar {
+  background-color: #fff;
   border-bottom: 1px solid rgba(189,189,189,.4);
+  left: 0;
   position: fixed;
+  top: 0;
   width: 100%;
+  z-index: 1;
 }
 
 .navbar nav {
@@ -272,7 +282,7 @@ button:disabled:focus {
 }
 
 .active-navlink {
-  border-bottom: 3px solid #1976d2;
+  border-bottom: 4px solid #1976d2;
 }
 
 .navbar-avatar {
@@ -330,7 +340,15 @@ button:disabled:focus {
 
   .greetings span {
     display: inline;
-    margin-right: .5em;
+    margin-right: .3em;
+  }
+
+  .card-header {
+    padding: 1em 2em;
+  }
+
+  .card-body {
+    padding: 2em;
   }
 }
 
