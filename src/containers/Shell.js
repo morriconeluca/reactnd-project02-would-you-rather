@@ -16,7 +16,7 @@ class Shell extends Component {
     const {questionsIds} = this.props;
 
     return (
-      <main role="main" className="centralize">
+      <main role="main" className="centralize-main">
         <Navbar />
         {questionsIds.length === 0
           ? <Loader />

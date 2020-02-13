@@ -1,13 +1,17 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
+import Question from './Question';
+
 function QuestionsList({questionsIds}) {
   return (
     questionsIds.length === 0
-      ? <p>No questions</p>
-      : <ul>
+      ? <p>No results</p>
+      : <ul className="questions-list centralize wrap">
         {questionsIds.map(id => (
-          <li key={id}>{id}</li>
+          <li key={id}>
+            <Question id={id} />
+          </li>
         ))}
       </ul>
   );

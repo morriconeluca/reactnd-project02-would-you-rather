@@ -16,6 +16,7 @@ html {
   -moz-osx-font-smoothing: grayscale;
   -webkit-font-smoothing: antialiased;
   -webkit-tap-highlight-color: transparent;
+  overflow-y: scroll;
 }
 
 body {
@@ -30,19 +31,46 @@ a {
 
 .container {
   margin: 0 auto;
-  padding: 0 1em;
+  padding: 0 .5em;
 }
 
-.centralize {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
+.flex,
+.centralize,
+.centralize-main,
+.centralize-cross {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+}
+
+.centralize,
+.centralize-main {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
+}
+
+.centralize,
+.centralize-cross {
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.wrap {
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.stretch {
+  -webkit-box-align: stretch;
+  -ms-flex-align: stretch;
+  align-items: stretch;
+}
+
+.small,
+small {
+  font-size: 83%;
 }
 
 .circle-icon-button {
@@ -114,7 +142,7 @@ a {
 /* MAIN */
 main {
   min-height: 100vh;
-  padding-top: 6.6em;
+  padding: 8.6em 0 2em;
 }
 
 /* SIGNIN */
@@ -124,14 +152,14 @@ main {
 }
 
 .signin-card {
-  margin: 1em;
+  margin: 1em .5em;
   max-width: 480px;
   min-width: 280px;
   text-align: center;
   width: 100%;
 }
 
-.signin-avatar {
+.card-avatar {
   width: 33%;
 }
 
@@ -151,10 +179,16 @@ select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  border-style: solid;
-  border-width: 1px;
   font-family: inherit;
   font-size: inherit;
+}
+
+.button,
+button,
+input,
+select {
+  border-style: solid;
+  border-width: 1px;
   line-height: 1.5;
   padding: .6em 1em;
   width: 100%;
@@ -204,6 +238,13 @@ option:disabled {
   color: rgba(0,0,0,.54);
 }
 
+.button {
+  display: inline-block;
+  text-align: center;
+  text-decoration: none;
+}
+
+.button,
 button {
   background-color: #0d47a1;
   border-color: #0d47a1;
@@ -211,6 +252,8 @@ button {
   color: #fff;
 }
 
+.button:hover,
+.button:focus,
 button:hover,
 button:focus {
   background-color: #1565c0;
@@ -218,6 +261,8 @@ button:focus {
   cursor: pointer;
 }
 
+.button:hover,
+.button:focus,
 button:hover,
 button:focus,
 input:hover,
@@ -248,11 +293,6 @@ button:disabled:focus {
   top: 0;
   width: 100%;
   z-index: 1;
-}
-
-.navbar nav {
-  -ms-flex-wrap: wrap;
-  flex-wrap: wrap;
 }
 
 .navbar ul,
@@ -290,7 +330,7 @@ button:disabled:focus {
 
 .navbar-avatar {
   height: 2.8rem;
-  margin-right: 1em;
+  margin-right: .5em;
   order: -1;
 }
 
@@ -307,7 +347,7 @@ button:disabled:focus {
   background-color: rgba(238,238,238,.8);
   background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 18 18"><path fill="rgba(0,0,0,.8)" d="M7.09 12.59L8.5 14l5-5-5-5-1.41 1.41L9.67 8H0v2h9.67zM18 0H0v6h2V2h14v14H2v-4H0v6h18z"/></svg>');
   border: 1px solid rgba(189,189,189,.8);
-  margin: .5em 0 .5em 1em;
+  margin: .5em 0 .5em .5em;
   overflow: hidden;
 }
 
@@ -349,21 +389,61 @@ button:disabled:focus {
 }
 
 .tab + .tab {
-  margin-left: .2em;
+  margin-left: .25em;
 }
 
 .tab-view {
   background-color: #fff;
   border: 1px solid rgba(189,189,189,.4);
   border-radius: 0 0 8px 8px;
-  min-height: 10em;
+  min-height: 18em;
+  padding: .5em;
+}
+
+.questions-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.questions-list li {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 15em;
+  flex: 1 1 15em;
+  margin: .5em;
+  max-width: 30em;
+}
+
+.question {
+  height: 100%;
+}
+
+.question-details {
+  -webkit-box-flex: 1;
+  -ms-flex: 1 1 auto;
+  flex: 1 1 auto;
+  margin-left: 1em;
+}
+
+.question-preview {
+  display: grid;
+  font-size: .83em;
+}
+
+.question-preview-inner {
+  font-weight: 400;
   overflow: hidden;
-  padding: 1em;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 @media (min-width: 640px) {
+  .container {
+    padding: 0 1em;
+  }
+
   main {
-    padding-top: 3.8em;
+    padding: 5.8em 0 2em;
   }
 
   .navbar ul {
@@ -392,12 +472,24 @@ button:disabled:focus {
     margin-right: .3em;
   }
 
+  .logout {
+    margin-left: 1em;
+  }
+
   .card-header {
     padding: 1em 2em;
   }
 
   .card-body {
     padding: 2em;
+  }
+
+  .tab-view {
+    padding: 1em;
+  }
+
+  .questions-list li {
+    margin: 1em;
   }
 }
 
@@ -412,8 +504,8 @@ button:disabled:focus {
   }
 }
 
-@media (min-width: 1280px) {
+@media (min-width: 1440px) {
   .container {
-    max-width: 1280px;
+    max-width: 1440px;
   }
 }

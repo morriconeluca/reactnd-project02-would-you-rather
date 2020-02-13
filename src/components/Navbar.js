@@ -7,7 +7,7 @@ import Logout from '../containers/Logout';
 export default function Navbar() {
   return (
     <header className="navbar">
-      <nav className="container centralize">
+      <nav className="container centralize wrap">
         <ul className="centralize">
           <li>
             <NavLink exact
