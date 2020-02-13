@@ -5,6 +5,7 @@ import {handleGetQuestions} from '../actions/questions';
 
 import Navbar from '../components/Navbar';
 import Loader from '../components/Loader';
+import QuestionsList from './QuestionsList';
 
 class Shell extends Component {
   componentDidMount() {
@@ -12,7 +13,7 @@ class Shell extends Component {
   };
 
   render() {
-    const {questions, questionsIds} = this.props;
+    const {questionsIds} = this.props;
 
     return (
       <main role="main" className="centralize">
@@ -21,7 +22,7 @@ class Shell extends Component {
           ? <Loader />
           : (
             <Switch>
-              <Route exact path="/" render={() => <p>Home</p>} />
+              <Route exact path="/" render={() => <QuestionsList answered />} />
               <Route exact path="/new" render={() => <p>New Poll</p>} />
               <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
             </Switch>
@@ -33,7 +34,6 @@ class Shell extends Component {
 }
 
 const mapStateToProps = state => ({
-  questions: state.questions,
   questionsIds: Object.keys(state.questions)
 })
 
