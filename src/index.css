@@ -420,10 +420,6 @@ button:disabled:focus {
   max-width: 30em;
 }
 
-.question {
-  height: 100%;
-}
-
 .question-details {
   -webkit-box-flex: 1;
   -ms-flex: 1 1 auto;
@@ -441,6 +437,10 @@ button:disabled:focus {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+
+.question {
+  max-width: 45em;
 }
 
 @media (min-width: 640px) {

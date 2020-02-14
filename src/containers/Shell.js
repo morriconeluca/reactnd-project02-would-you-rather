@@ -7,7 +7,7 @@ import Navbar from '../components/Navbar';
 import Loader from '../components/Loader';
 import ToggleTabs from './ToggleTabs';
 
-import QuestionCard from './QuestionCard';
+import Question from './Question';
 
 class Shell extends Component {
   componentDidMount() {
@@ -18,7 +18,7 @@ class Shell extends Component {
     const {questionsIds} = this.props;
 
     return (
-      <main role="main" className="centralize-main">
+      <main role="main" className="centralize">
         <Navbar />
         {questionsIds.length === 0
           ? <Loader />
@@ -27,14 +27,7 @@ class Shell extends Component {
               <Route exact path="/" component={ToggleTabs} />
               <Route exact path="/new" render={() => <p>New Poll</p>} />
               <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
-              <Route
-                path="/questions/:questionId"
-                render={({match}) => (
-                  <QuestionCard id={match.params.questionId}>
-                    Question: {match.params.questionId}
-                  </QuestionCard>
-                )}
-              />
+              <Route path="/questions/:questionId" component={Question} />
               <Route render={() => <p>404 Page</p>} />
             </Switch>
           )
