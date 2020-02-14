@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
-import {Link} from 'react-router-dom';
 
-import Avatar from '../containers/Avatar';
+import Avatar from './Avatar';
 
-function Question({question, user}) {
+function QuestionCard({question, user, children}) {
   return (
     <article className="question card">
       <header className="card-header">
@@ -18,18 +17,7 @@ function Question({question, user}) {
           id={user.id}
         />
         <section className="question-details">
-          <h3 className="question-preview">
-            Would you rather…<br />
-            <span className="question-preview-inner">
-              {question.optionOne.text} or…
-            </span>
-          </h3>
-          <Link
-            to={`/questions/${question.id}`}
-            className="button small"
-          >
-            View Poll
-          </Link>
+          {children}
         </section>
       </div>
     </article>
@@ -41,4 +29,4 @@ const mapStateToProps = (state, {id}) => ({
   user: state.users[state.questions[id].author]
 });
 
-export default connect(mapStateToProps)(Question);
+export default connect(mapStateToProps)(QuestionCard);

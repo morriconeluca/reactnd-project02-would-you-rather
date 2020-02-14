@@ -1,7 +1,8 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-import Question from './Question';
+import QuestionCard from './QuestionCard';
+import QuestionPreview from './QuestionPreview';
 
 function QuestionsList({questionsIds}) {
   return (
@@ -10,7 +11,9 @@ function QuestionsList({questionsIds}) {
       : <ul className="questions-list centralize wrap">
         {questionsIds.map(id => (
           <li key={id}>
-            <Question id={id} />
+            <QuestionCard id={id}>
+              <QuestionPreview id={id} />
+            </QuestionCard>
           </li>
         ))}
       </ul>
