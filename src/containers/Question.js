@@ -25,7 +25,7 @@ function Question({question, user}) {
             </span>
           </h3>
           <Link
-            to={`/question/${question.id}`}
+            to={`/questions/${question.id}`}
             className="button small"
           >
             View Poll

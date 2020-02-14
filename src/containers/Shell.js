@@ -25,6 +25,8 @@ class Shell extends Component {
               <Route exact path="/" component={ToggleTabs} />
               <Route exact path="/new" render={() => <p>New Poll</p>} />
               <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
+              <Route path="/questions/:questionId" render={({match}) => <p>Question: {match.params.questionId}</p>} />
+              <Route render={() => <p>404 Page</p>} />
             </Switch>
           )
         }
