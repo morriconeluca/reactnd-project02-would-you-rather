@@ -2,6 +2,7 @@ import React from 'react';
 import {connect} from 'react-redux';
 
 import QuestionCard from './QuestionCard';
+import QuestionPoll from './QuestionPoll';
 
 function Question({question, user}) {
   return (
@@ -9,7 +10,7 @@ function Question({question, user}) {
       <QuestionCard id={question.id}>
         {question.id in user.answers
           ? `I have answered to this question: ${question.id}`
-          : `I have to answer to this question: ${question.id}`
+          : <QuestionPoll id={question.id} />
         }
       </QuestionCard>
     </div>
