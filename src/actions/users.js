@@ -7,11 +7,11 @@ export function receiveUsers(users) {
     type: RECEIVE_USERS,
     users
   };
-}
+};
 
 export function handleGetUsers() {
   return async dispatch => {
     const users = await _getUsers();
     dispatch(receiveUsers(users));
   };
-}
+};

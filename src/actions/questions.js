@@ -7,11 +7,11 @@ export function receiveQuestions(questions) {
     type: RECEIVE_QUESTIONS,
     questions
   };
-}
+};
 
 export function handleGetQuestions() {
   return async dispatch => {
     const questions = await _getQuestions();
     dispatch(receiveQuestions(questions));
   };
-}
+};

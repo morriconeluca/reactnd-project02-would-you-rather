@@ -1,6 +1,8 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
+import {handleSaveQuestionAnswer} from '../actions/shared';
+
 class QuestionPoll extends Component {
   state = {
     answer: ''
@@ -10,6 +12,20 @@ class QuestionPoll extends Component {
     this.setState({
       answer: e.target.value
     });
+  }
+
+  handleSubmit = e => {
+    e.preventDefault();
+    const {authedUser, question, dispatch} = this.props;
+    const {answer} = this.state;
+
+    if (answer) {
+      dispatch(handleSaveQuestionAnswer(
+        authedUser,
+        question.id,
+        answer
+      ));
+    }
   }
 
   render() {
@@ -44,7 +60,7 @@ class QuestionPoll extends Component {
           </li>
         </ul>
         <button
-          className=""
+          disabled={!this.state.answer}
         >
           Submit
         </button>
@@ -54,6 +70,7 @@ class QuestionPoll extends Component {
 }
 
 const mapStateToProps = (state, {id}) => ({
+  authedUser: state.authedUser,
   question: state.questions[id]
 });
 
