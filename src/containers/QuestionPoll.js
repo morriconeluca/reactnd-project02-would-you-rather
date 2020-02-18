@@ -31,7 +31,7 @@ class QuestionPoll extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit} className="question-poll">
-        <h3>Would you rather…</h3>
+        <h3 className="poll-title">Would you rather…</h3>
         <ul className="poll-options">
           <li>
             <label>

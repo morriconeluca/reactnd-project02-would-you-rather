@@ -3,13 +3,14 @@ import {connect} from 'react-redux';
 
 import QuestionCard from './QuestionCard';
 import QuestionPoll from './QuestionPoll';
+import QuestionResults from './QuestionResults';
 
 function Question({question, user}) {
   return (
     <div className="question container">
       <QuestionCard id={question.id}>
         {question.id in user.answers
-          ? `I have answered to this question: ${question.id}`
+          ? <QuestionResults id={question.id} />
           : <QuestionPoll id={question.id} />
         }
       </QuestionCard>
