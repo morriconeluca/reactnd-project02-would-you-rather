@@ -1,5 +1,6 @@
 import {RECEIVE_QUESTIONS} from '../actions/questions';
 import {SAVE_QUESTION_ANSWER} from '../actions/shared';
+import {SAVE_QUESTION} from '../actions/shared';
 
 export default function questions(state = {}, action) {
   switch (action.type) {
@@ -16,6 +17,12 @@ export default function questions(state = {}, action) {
             votes: state[questionId][answer].votes.concat([authedUser])
           }
         }
+      };
+    case SAVE_QUESTION:
+      const {question} = action;
+      return {
+        ...state,
+        [question.id]: question
       };
     default:
       return state;

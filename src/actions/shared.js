@@ -1,6 +1,8 @@
 import {_saveQuestionAnswer} from '../api/_DATA';
+import {_saveQuestion} from '../api/_DATA';
 
 export const SAVE_QUESTION_ANSWER = 'SAVE_QUESTION_ANSWER';
+export const SAVE_QUESTION = 'SAVE_QUESTION';
 
 export function saveQuestionAnswer(authedUser, questionId, answer) {
   return {
@@ -16,6 +18,28 @@ export function handleSaveQuestionAnswer(authedUser, questionId, answer) {
     try {
       await _saveQuestionAnswer({authedUser, qid: questionId, answer});
       dispatch(saveQuestionAnswer(authedUser, questionId, answer));
+    } catch {
+      alert('Sorry, there was an error! Try again.');
+    }
+  };
+};
+
+export function saveQuestion(question) {
+  return {
+    type: SAVE_QUESTION,
+    question
+  }
+};
+
+export function handleSaveQuestion(optionOneText, optionTwoText, author) {
+  return async dispatch => {
+    try {
+      const question = await _saveQuestion({
+        optionOneText,
+        optionTwoText,
+        author
+      });
+      dispatch(saveQuestion(question));
     } catch {
       alert('Sorry, there was an error! Try again.');
     }

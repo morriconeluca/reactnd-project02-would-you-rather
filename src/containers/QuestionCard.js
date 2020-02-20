@@ -3,18 +3,22 @@ import {connect} from 'react-redux';
 
 import Avatar from './Avatar';
 
-function QuestionCard({question, user, children}) {
+function QuestionCard({id, answers, author, children}) {
   return (
     <article className="question card">
       <header className="card-header">
         <h2 className="card-title">
-          {user.name} asks:
+          {
+            id in answers
+              ? `By ${author.name}`
+              : `${author.name} asks:`
+          }
         </h2>
       </header>
       <div className="card-body centralize">
         <Avatar
           className="card-avatar"
-          id={user.id}
+          id={author.id}
         />
         <section className="question-details">
           {children}
@@ -25,8 +29,8 @@ function QuestionCard({question, user, children}) {
 }
 
 const mapStateToProps = (state, {id}) => ({
-  question: state.questions[id],
-  user: state.users[state.questions[id].author]
+  answers: state.users[state.authedUser].answers,
+  author: state.users[state.questions[id].author]
 });
 
 export default connect(mapStateToProps)(QuestionCard);
