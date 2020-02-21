@@ -324,6 +324,15 @@ form li {
 
 /* UTILITY CLASSES */
 
+.error {
+  background-color: #ffcdd2;
+  border-radius: 1.4em;
+  color: #b71c1c;
+  letter-spacing: .1em;
+  padding: .6em 1em;
+  text-align: center;
+}
+
 .small,
 small {
   font-size: 83%;
@@ -392,11 +401,27 @@ small {
 
 .loader {
   background-color: #fff;
+  flex-direction: column;
   height: 100vh;
   left: 0;
   position: fixed;
   top: 0;
   width: 100%;
+}
+
+.spinner {
+  -webkit-animation: spin 1s linear infinite;
+  animation: spin 1s linear infinite;
+  border-color: rgba(66,165,245,.8) transparent;
+  border-style: solid;
+  border-radius: 50%;
+  border-width: 4px;
+  display: inline-block;
+  height: 1.5em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  vertical-align: bottom;
+  width: 1.5em;
 }
 
 /* MAIN */
@@ -672,6 +697,30 @@ figcaption {
 .new-poll-body-title {
   font-size: 1.17em;
   margin: 0 0 1em;
+}
+
+/* ANIMATIONS */
+
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
 }
 
 /* MEDIA QUERIES */

@@ -18,8 +18,9 @@ export function handleSaveQuestionAnswer(authedUser, questionId, answer) {
     try {
       await _saveQuestionAnswer({authedUser, qid: questionId, answer});
       dispatch(saveQuestionAnswer(authedUser, questionId, answer));
+      return Promise.resolve();
     } catch {
-      alert('Sorry, there was an error! Try again.');
+      return Promise.reject('Sorry, there was an error! Try again.');
     }
   };
 };
@@ -42,7 +43,7 @@ export function handleSaveQuestion(optionOneText, optionTwoText, author) {
       dispatch(saveQuestion(question));
       return Promise.resolve(question.id);
     } catch {
-      alert('Sorry, there was an error! Try again.');
+      return Promise.reject('Sorry, there was an error! Try again.');
     }
   };
 };

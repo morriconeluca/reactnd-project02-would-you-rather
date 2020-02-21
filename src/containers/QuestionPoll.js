@@ -3,32 +3,52 @@ import {connect} from 'react-redux';
 
 import {handleSaveQuestionAnswer} from '../actions/shared';
 
+import Spinner from '../components/Spinner';
+
 class QuestionPoll extends Component {
   state = {
-    answer: ''
+    answer: '',
+    loading: false,
+    error: ''
   }
 
   handleChange = e => {
     this.setState({
-      answer: e.target.value
+      answer: e.target.value,
+      error: ''
     });
   }
 
   handleSubmit = e => {
     e.preventDefault();
     const {authedUser, question, dispatch} = this.props;
-    const {answer} = this.state;
+    const {answer, loading} = this.state;
 
-    if (answer) {
-      dispatch(handleSaveQuestionAnswer(
-        authedUser,
-        question.id,
-        answer
-      ));
+    if (!loading && answer) {
+      this.setState({
+        loading: true
+      }, () => {
+        dispatch(handleSaveQuestionAnswer(
+          authedUser,
+          question.id,
+          answer
+        )).then(() => {
+          this.setState({
+            loading: false
+          });
+        }).catch(error => {
+          this.setState({
+            loading: false,
+            error
+          });
+        });
+      });
     }
   }
 
   render() {
+    const {answer, loading, error} = this.state;
+
     return (
       <form onSubmit={this.handleSubmit} className="question-poll">
         <h3 className="poll-title">Would you rather…</h3>
@@ -39,7 +59,7 @@ class QuestionPoll extends Component {
                 type="radio"
                 name="poll-option"
                 value="optionOne"
-                checked={this.state.answer === 'optionOne'}
+                checked={answer === 'optionOne'}
                 onChange={this.handleChange}
               />
               {this.props.question.optionOne.text}
@@ -52,17 +72,20 @@ class QuestionPoll extends Component {
                 type="radio"
                 name="poll-option"
                 value="optionTwo"
-                checked={this.state.answer === 'optionTwo'}
+                checked={answer === 'optionTwo'}
                 onChange={this.handleChange}
               />
               {this.props.question.optionTwo.text}
             </label>
           </li>
         </ul>
+        {error &&
+          <p className="error">{error}</p>
+        }
         <button
-          disabled={!this.state.answer}
+          disabled={!answer}
         >
-          Submit
+          {!loading ? 'Submit' : <Spinner />}
         </button>
       </form>
     );

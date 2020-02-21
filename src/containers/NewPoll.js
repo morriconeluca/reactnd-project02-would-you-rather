@@ -4,13 +4,14 @@ import {withRouter} from 'react-router-dom';
 
 import {handleSaveQuestion} from '../actions/shared';
 
-import Loader from '../components/Loader';
+import Spinner from '../components/Spinner';
 
 class NewPoll extends Component {
   state = {
     optionOneText: '',
     optionTwoText: '',
-    loading: false
+    loading: false,
+    error: ''
   };
 
   onChange = e => {
@@ -18,15 +19,16 @@ class NewPoll extends Component {
 
     const whiteSpaceAtBeginning = /^\s+/;
     this.setState(state => ({
-      [name]: whiteSpaceAtBeginning.test(value) ? state[name] : value
+      [name]: whiteSpaceAtBeginning.test(value) ? state[name] : value,
+      error: ''
     }));
   };
 
   handleSubmit = e => {
     e.preventDefault();
-    const {optionOneText, optionTwoText} = this.state;
+    const {optionOneText, optionTwoText, loading} = this.state;
 
-    if (optionOneText && optionTwoText) {
+    if (!loading && optionOneText && optionTwoText) {
       const {dispatch, author, history} = this.props;
 
       this.setState({
@@ -36,19 +38,18 @@ class NewPoll extends Component {
           optionOneText.trim(), optionTwoText.trim(), author
         )).then(id => {
           history.push(`/questions/${id}`);
+        }).catch(error => {
+          this.setState({
+            loading: false,
+            error
+          });
         });
       });
     }
   };
 
   render() {
-    const {optionOneText, optionTwoText} = this.state;
-
-    if (this.state.loading) {
-      return (
-        <Loader />
-      );
-    }
+    const {optionOneText, optionTwoText, loading, error} = this.state;
 
     return (
       <div className="new-poll question container">
@@ -87,7 +88,12 @@ class NewPoll extends Component {
                 onChange={this.onChange}
               />
             </p>
-            <button disabled={!(optionOneText && optionTwoText)}>Submit</button>
+            {error &&
+              <p className="error">{error}</p>
+            }
+            <button disabled={!(optionOneText && optionTwoText)}>
+              {!loading ? 'Submit' : <Spinner />}
+            </button>
           </fieldset>
         </form>
       </div>
