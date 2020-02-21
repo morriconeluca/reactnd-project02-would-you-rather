@@ -40,6 +40,7 @@ export function handleSaveQuestion(optionOneText, optionTwoText, author) {
         author
       });
       dispatch(saveQuestion(question));
+      return Promise.resolve(question.id);
     } catch {
       alert('Sorry, there was an error! Try again.');
     }

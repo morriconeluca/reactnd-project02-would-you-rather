@@ -37,7 +37,7 @@ function QuestionResults({authedUser, question}) {
             question.optionOne.votes.includes(authedUser) &&
             <span className="your-vote">YOUR VOTE</span>
           }
-          {one} out of {votes} votes
+          {getPercent(one, votes)}% - {one} out of {votes} votes
         </figcaption>
       </figure>
       <hr className="results-or"/>
@@ -60,7 +60,7 @@ function QuestionResults({authedUser, question}) {
             question.optionTwo.votes.includes(authedUser) &&
             <span className="your-vote">YOUR VOTE</span>
           }
-          {two} out of {votes} votes
+          {getPercent(two, votes)}% - {two} out of {votes} votes
         </figcaption>
       </figure>
     </div>

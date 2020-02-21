@@ -415,7 +415,7 @@ main {
 
 .signin-card {
   margin: 1em .5em;
-  max-width: 480px;
+  max-width: 30em;
   min-width: 280px;
   text-align: center;
   width: 100%;
@@ -660,6 +660,18 @@ figcaption {
   letter-spacing: 1em;
   text-align: center;
   text-indent: 1em;
+}
+
+/* NEW POLL */
+
+.new-poll {
+  width: 100%;
+  max-width: 32em;
+}
+
+.new-poll-body-title {
+  font-size: 1.17em;
+  margin: 0 0 1em;
 }
 
 /* MEDIA QUERIES */
