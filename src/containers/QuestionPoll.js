@@ -32,11 +32,7 @@ class QuestionPoll extends Component {
           authedUser,
           question.id,
           answer
-        )).then(() => {
-          this.setState({
-            loading: false
-          });
-        }).catch(error => {
+        )).catch(error => {
           this.setState({
             loading: false,
             error
