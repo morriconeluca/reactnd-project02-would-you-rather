@@ -17,7 +17,7 @@ export default function Navbar() {
           </li>
           <li>
             <NavLink exact
-              to="/new"
+              to="/add"
               activeClassName="navlink-active"
             >New Poll</NavLink>
           </li>

@@ -36,8 +36,8 @@ class NewPoll extends Component {
       }, () => {
         dispatch(handleSaveQuestion(
           optionOneText.trim(), optionTwoText.trim(), author
-        )).then(id => {
-          history.push(`/questions/${id}`);
+        )).then(() => {
+          history.push('/');
         }).catch(error => {
           this.setState({
             loading: false,

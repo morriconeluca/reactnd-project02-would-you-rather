@@ -8,7 +8,7 @@ import QuestionResults from './QuestionResults';
 function Question({question, user}) {
   if (!question) {
     return (
-      <p>The question you are looking doesn't exists.</p>
+      <p>The question you are looking for does not exist.</p>
     );
   }
 
