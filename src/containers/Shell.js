@@ -34,7 +34,7 @@ class Shell extends Component {
               <Route exact path="/add" component={AddPoll} />
               <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
               <Route path="/questions/:questionId" component={Question} />
-              <Route render={() => <p>404 Page</p>} />
+              <Route render={() => <h1>404 Page</h1>} />
             </Switch>
           )
         }
