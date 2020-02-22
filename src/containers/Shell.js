@@ -9,6 +9,7 @@ import ToggleTabs from './ToggleTabs';
 
 import Question from './Question';
 import AddPoll from './AddPoll';
+import LeaderBoard from './LeaderBoard';
 
 class Shell extends Component {
   componentDidMount() {
@@ -32,7 +33,7 @@ class Shell extends Component {
             <Switch>
               <Route exact path="/" component={ToggleTabs} />
               <Route exact path="/add" component={AddPoll} />
-              <Route exact path="/leaderboard" render={() => <p>Leader Board</p>} />
+              <Route exact path="/leaderboard" component={LeaderBoard} />
               <Route path="/questions/:questionId" component={Question} />
               <Route render={() => <h1>404 Page</h1>} />
             </Switch>
