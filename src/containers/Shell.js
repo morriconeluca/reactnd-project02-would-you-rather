@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {Switch, Route} from 'react-router-dom';
+import {Switch, Route, withRouter} from 'react-router-dom';
 import {connect} from 'react-redux';
 import {handleGetQuestions} from '../actions/questions';
 
@@ -16,10 +16,15 @@ class Shell extends Component {
   };
 
   render() {
-    const {questionsIds} = this.props;
+    const {questionsIds, location} = this.props;
 
     return (
-      <main role="main" className="centralize">
+      <main
+        role="main"
+        className={
+          `centralize${location.pathname === '/' ? '-main' : ''}`
+        }
+      >
         <Navbar />
         {questionsIds.length === 0
           ? <Loader />
@@ -42,4 +47,4 @@ const mapStateToProps = state => ({
   questionsIds: Object.keys(state.questions)
 })
 
-export default connect(mapStateToProps)(Shell);
+export default withRouter(connect(mapStateToProps)(Shell));

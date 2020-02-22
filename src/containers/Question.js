@@ -6,6 +6,12 @@ import QuestionPoll from './QuestionPoll';
 import QuestionResults from './QuestionResults';
 
 function Question({question, user}) {
+  if (!question) {
+    return (
+      <p>The question you are looking doesn't exists.</p>
+    );
+  }
+
   return (
     <div className="question container">
       <QuestionCard id={question.id}>
@@ -19,7 +25,9 @@ function Question({question, user}) {
 }
 
 const mapStateToProps = (state, {match: {params: {questionId}}}) => ({
-  question: state.questions[questionId],
+  question: questionId in state.questions
+    ? state.questions[questionId]
+    : null,
   user: state.users[state.authedUser]
 });
 
