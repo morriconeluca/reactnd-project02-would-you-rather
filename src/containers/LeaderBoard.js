@@ -1,16 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux';
 
-function getPoint(user) {
-  return user.questions.length + Object.keys(user.answers).length;
-}
+import {hasPoints, getPoints} from '../utils';
 
-function hasPoint(user) {
-  return (
-    user.questions.length > 0
-    || Object.keys(user.answers).length > 0
-  );
-}
+import LeaderCard from './LeaderCard';
 
 function LeaderBoard({users}) {
   if (users.length === 0) {
@@ -20,9 +13,11 @@ function LeaderBoard({users}) {
   }
 
   return (
-    <ul className="leaderboard">
+    <ul className="leaderboard container centralize wrap">
       {users.map(id => (
-        <li key={id} id={id}>{id}</li>
+        <li key={id}>
+          <LeaderCard id={id} />
+        </li>
       ))}
     </ul>
   );
@@ -30,8 +25,8 @@ function LeaderBoard({users}) {
 
 const mapStateToProps = ({users}) => ({
   users: Object.keys(users)
-    .filter(id => hasPoint(users[id]))
-    .sort((a, b) => getPoint(users[b]) - getPoint(users[a]))
+    .filter(id => hasPoints(users[id]))
+    .sort((a, b) => getPoints(users[b]) - getPoints(users[a]))
 });
 
 export default connect(mapStateToProps)(LeaderBoard);
